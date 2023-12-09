@@ -1,14 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 :root {
-  --color-white: hsl(252, 30%, 100%);
-  --color-light: hsl(252, 30%, 95%);
+  --primary-color-hue: 252;
+  --dark-color-lightness: 17%;
+  --light-color-lightness: 95%;
+  --white-color-lightness: 100%;
+
+  --color-white: hsl(252, 30%, var(--white-color-lightness));
+  --color-light: hsl(252, 30%, var(--light-color-lightness));
   --color-gray: hsl(252, 35%, 65%);
-  --color-primary: hsl(252, 75%, 60%);
+  --color-primary: hsl(var(--primary-color-hue), 75%, 60%);
   --color-secondary: hsl(252, 100%, 90%);
   --color-success: hsl(120, 95%, 65%);
   --color-danger: hsl(0, 95%, 65%);
-  --color-dark: hsl(252, 30%, 17%);
+  --color-dark: hsl(252, 30%, var(--dark-color-lightness));
   --color-black: hsl(252, 30%, 10%);
 
   --border-radius: 2rem;
@@ -40,7 +45,8 @@ body {
   overflow-x: hidden;
 }
 
-/* General styles */
+/* -- ============ General Styles ============ -- */
+
 .container {
   width: 80%;
   margin: 0 auto;
@@ -125,7 +131,8 @@ nav .create {
   gap: 2rem;
 }
 
-/* ---------- Main ---------- */
+/* -- ============ Main ============ -- */
+
 main {
   position: relative;
   top: 5.4rem;
@@ -155,7 +162,8 @@ main .container .left .profile {
   width: 100%;
 }
 
-/* ---------- Sidebar ---------- */
+/* -- ============ Sidebar ============ -- */
+
 .left .sidebar {
   margin-top: 1rem;
   background: var(--color-white);
@@ -234,7 +242,8 @@ main .container .left .profile {
   padding: 1rem 0;
 }
 
-/* ---------- Notification popup ---------- */
+/* -- ============ Notification Popup ============ -- */
+
 .left .notifications-popup {
   position: absolute;
   top: 0;
@@ -272,7 +281,8 @@ main .container .left .profile {
 
 /* -- ============ Middle ============ -- */
 
-/* -- -----Stories ----- -- */
+/* -- ============ Stories ============ -- */
+
 .middle .stories {
   display: flex;
   justify-content: space-between;
@@ -339,7 +349,8 @@ main .container .left .profile {
   border: 3px solid var(--color-primary);
 }
 
-/* -- ----- Create Post ----- -- */
+/* -- ============ Create Post ============ -- */
+
 .middle .create-post {
   width: 100%;
   display: flex;
@@ -360,7 +371,8 @@ main .container .left .profile {
   margin-right: 1rem;
 }
 
-/* -- ----- Feeds ----- -- */
+/* -- ============ Feeds ============ -- */
+
 .middle .feeds .feed {
   background: var(--color-white);
   border-radius: var(--card-border-radius);
@@ -417,6 +429,7 @@ main .container .left .profile {
 }
 
 /* -- ============ Right ============ -- */
+
 main .container .right {
   height: max-content;
   position: sticky;
@@ -444,7 +457,7 @@ main .container .right {
 .right .messages .search-bar {
   display: flex;
   margin-bottom: 1rem;
-} 
+}
 
 .right .messages .category {
   display: flex;
@@ -503,7 +516,8 @@ main .container .right {
   right: 0;
 }
 
-/* -- ----- Friend Requests ----- -- */
+/* -- ============ Friend Requests ============ -- */
+
 .right .friend-requests {
   margin-top: 1rem;
 }
@@ -532,6 +546,7 @@ main .container .right {
 }
 
 /* -- ============ Theme Customization ============ -- */
+
 .customize-theme {
   background: rgba(255, 255, 255, 0.5);
   width: 100vw;
@@ -552,9 +567,11 @@ main .container .right {
   padding: 3rem;
   border-radius: var(--card-border-radius);
   width: 50%;
+  box-shadow: 0 0 1rem var(--color-primary);
 }
 
-/* -- ----- Font Size ----- -- */
+/* -- ============ Font Size ============ -- */
+
 .customize-theme .font-size {
   margin-top: 5rem;
 }
@@ -683,10 +700,11 @@ main .container .right {
   margin-right: 1rem;
 }
 
-/* ============================================ */
+/* =============================================== */
 /* -- ============ @Media Queries  ============ -- */
 
-/* -- ----- Small lapstops and tablets ----- -- */
+/* -- ============ Small Laptops and Tablets ============ -- */
+
 @media screen and (max-width: 1200px) {
   .container {
     width: 96%;
@@ -713,9 +731,14 @@ main .container .right {
   .left .btn {
     display: none;
   }
+
+  .customize-theme .card {
+    width: 80vw;
+  }
 }
 
-/* -- ----- Small tablets and mobile ----- -- */
+/* -- ============ Small Tablets and Mobile ============ -- */
+
 @media screen and (max-width: 992px) {
   nav .search-bar {
     display: none;
@@ -733,7 +756,8 @@ main .container .right {
     right: 0;
   }
 
-  /* -- ----- Notification Popup ----- -- */
+  /* -- ============ Notification Popup ============ -- */
+
   .left .notifications-popup {
     position: absolute;
     left: -20rem;
@@ -742,7 +766,6 @@ main .container .right {
 
   .left .notifications-popup::before {
     position: absolute;
-    /* *** display: absolute */
     top: 1.3rem;
     left: calc(20rem - 0.6rem);
     display: block;
@@ -754,5 +777,20 @@ main .container .right {
 
   main .container .right {
     display: none;
+  }
+
+  .customize-theme .card {
+    width: 92vw;
+  }
+}
+
+/* -- ============ Mobile ============ -- */
+
+@media screen and (max-width: 650px) {
+  .customize-theme .card .background .choose-bg {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
   }
 }
